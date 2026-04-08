@@ -1,0 +1,15 @@
+---
+import SeoPage from '../../components/SeoPage.astro';
+import { industrialServices } from '../../data/site-pages';
+
+export function getStaticPaths() {
+	return industrialServices.map((page) => ({
+		params: { slug: page.slug },
+		props: { page },
+	}));
+}
+
+const { page } = Astro.props;
+---
+
+<SeoPage page={page} />

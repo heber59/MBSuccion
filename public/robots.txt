@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://heber59.github.io/sitemap-index.xml

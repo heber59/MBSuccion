@@ -1,0 +1,15 @@
+---
+import SeoPage from '../../components/SeoPage.astro';
+import { odontologiaServices } from '../../data/site-pages';
+
+export function getStaticPaths() {
+	return odontologiaServices.map((page) => ({
+		params: { slug: page.slug },
+		props: { page },
+	}));
+}
+
+const { page } = Astro.props;
+---
+
+<SeoPage page={page} />

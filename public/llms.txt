@@ -1,0 +1,33 @@
+# MBAireYSuccion
+
+MB Aire y Succion es una empresa especializada en servicio tecnico, mantenimiento, fabricacion y venta de equipos para el sector odontologico e industrial en Bogota, Fontibon, Colombia.
+
+## Ubicacion
+
+- Bogota;
+- Fontibon;
+- Colombia.
+
+## Sector odontologico
+
+- venta de sillas odontologicas y equipos medicos generales;
+- suministro de compresores odontologicos;
+- bombas de succion de alta;
+- mantenimiento de equipos odontologicos;
+- sistemas de succion especializados y a la medida.
+
+## Sector industrial
+
+- mantenimiento y reparacion de compresores lubricados de piston;
+- mantenimiento y reparacion de compresores de tornillo;
+- servicio para cabezotes;
+- bobinado de motores electricos;
+- repuestos de calidad y mano de obra especializada.
+
+## Enfoque de servicio
+
+- diagnosticos precisos;
+- servicio tecnico oportuno;
+- calidad profesional;
+- optimizacion del rendimiento;
+- prolongacion de la vida util de los equipos.
