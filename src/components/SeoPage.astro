@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import MainHeader from '../components/MainHeader.astro';
+import MainFooter from '../components/MainFooter.astro';
 import type { PageEntry } from '../data/site-pages';
 
 interface Props {
@@ -40,233 +42,229 @@ const structuredData = [
 	keywords={page.keywords}
 	structuredData={structuredData}
 >
+	<MainHeader />
+	
 	<main class="page-shell">
-		<section class="hero">
+		<section class="hero-inner">
 			<nav class="breadcrumbs" aria-label="Migas de pan">
 				<a href="/">Inicio</a>
-				<span>/</span>
+				<span class="sep">/</span>
 				<span>{page.title}</span>
 			</nav>
-			<p class="eyebrow">{page.eyebrow}</p>
+			<span class="eyebrow">{page.eyebrow}</span>
 			<h1>{page.h1}</h1>
 			<p class="intro">{page.intro}</p>
 			<div class="cta-row">
 				{page.ctaLinks.map((link) => (
-					<a class="cta primary" href={link.href}>{link.label}</a>
+					<a class="btn primary" href={link.href}>{link.label}</a>
 				))}
 			</div>
 		</section>
 
-		<section class="section two-col">
-			<article class="panel">
-				<h2>Aspectos principales</h2>
-				<ul class="check-list">
-					{page.primaryPoints.map((point) => (
-						<li>{point}</li>
+		<div class="container content-grid">
+			<section class="panels">
+				<article class="panel dental">
+					<h2>Aspectos principales</h2>
+					<ul class="check-list">
+						{page.primaryPoints.map((point) => (
+							<li>{point}</li>
+						))}
+					</ul>
+				</article>
+				<article class="panel industrial">
+					<h2>Por qué importa</h2>
+					<ul class="check-list">
+						{page.secondaryPoints.map((point) => (
+							<li>{point}</li>
+						))}
+					</ul>
+				</article>
+			</section>
+
+			<section class="related">
+				<h2 class="section-title">Rutas relacionadas</h2>
+				<div class="link-grid">
+					{page.relatedLinks.map((link) => (
+						<a class="link-card" href={link.href}>
+							<h3>{link.label}</h3>
+							<p>Información técnica y servicios relacionados en esta área.</p>
+						</a>
 					))}
-				</ul>
-			</article>
-			<article class="panel alt">
-				<h2>Por que esta pagina importa</h2>
-				<ul class="check-list">
-					{page.secondaryPoints.map((point) => (
-						<li>{point}</li>
+				</div>
+			</section>
+
+			<section class="faqs">
+				<h2 class="section-title">Preguntas frecuentes</h2>
+				<div class="faq-grid">
+					{page.faqs.map((faq) => (
+						<article class="faq-item">
+							<h3>{faq.question}</h3>
+							<p>{faq.answer}</p>
+						</article>
 					))}
-				</ul>
-			</article>
-		</section>
-
-		<section class="section">
-			<div class="section-heading">
-				<p class="eyebrow">Rutas relacionadas</p>
-				<h2>Conexion con el resto del sitio</h2>
-			</div>
-			<div class="link-grid">
-				{page.relatedLinks.map((link) => (
-					<a class="link-card" href={link.href}>
-						<h3>{link.label}</h3>
-						<p>Ir a esta ruta relacionada para reforzar contexto y navegacion.</p>
-					</a>
-				))}
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="section-heading">
-				<p class="eyebrow">Preguntas frecuentes</p>
-				<h2>Informacion util para usuarios y buscadores</h2>
-			</div>
-			<div class="faq-grid">
-				{page.faqs.map((faq) => (
-					<article class="faq-item">
-						<h3>{faq.question}</h3>
-						<p>{faq.answer}</p>
-					</article>
-				))}
-			</div>
-		</section>
+				</div>
+			</section>
+		</div>
 	</main>
+
+	<MainFooter />
 </Layout>
 
 <style>
 	.page-shell {
-		width: min(1120px, calc(100% - 32px));
-		margin: 0 auto;
-		padding: 24px 0 56px;
+		padding-bottom: 6rem;
 	}
 
-	.hero,
-	.panel,
-	.link-card,
-	.faq-item {
-		background: rgba(255, 255, 255, 0.84);
-		border: 1px solid rgba(16, 33, 47, 0.08);
-		border-radius: 24px;
-		box-shadow: 0 24px 80px rgba(16, 33, 47, 0.1);
+	.hero-inner {
+		padding: 4rem 0;
+		background: var(--dental-bg);
+		border-bottom: 1px solid var(--line-soft);
+		margin-bottom: 4rem;
+		text-align: center;
 	}
 
-	.hero {
-		padding: 34px;
+	.hero-inner .container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.breadcrumbs {
 		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-		font-size: 0.95rem;
-		color: #51606c;
-		margin-bottom: 18px;
-	}
-
-	.breadcrumbs a {
-		text-decoration: none;
+		justify-content: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--text-muted);
+		margin-bottom: 2rem;
 	}
 
 	.eyebrow {
-		text-transform: uppercase;
-		letter-spacing: 0.14em;
-		font-size: 0.76rem;
+		display: inline-block;
+		color: var(--dental-accent);
 		font-weight: 700;
-		color: #156b86;
-		margin: 0 0 14px;
-	}
-
-	h1,
-	h2,
-	h3,
-	p,
-	ul {
-		margin-top: 0;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin-bottom: 1rem;
 	}
 
 	h1 {
-		font-size: clamp(2.3rem, 5vw, 4.2rem);
-		line-height: 0.98;
-		margin-bottom: 18px;
-		max-width: 14ch;
+		font-size: clamp(2rem, 5vw, 3.5rem);
+		font-weight: 800;
+		line-height: 1.1;
+		margin-bottom: 1.5rem;
+		max-width: 25ch;
+		margin-inline: auto;
 	}
 
-	h2 {
-		font-size: clamp(1.6rem, 3vw, 2.4rem);
-		line-height: 1.05;
-		margin-bottom: 18px;
-	}
-
-	h3 {
-		font-size: 1.2rem;
-		margin-bottom: 12px;
-	}
-
-	.intro,
-	.check-list li,
-	.link-card p,
-	.faq-item p {
-		color: #51606c;
-		font-size: 1.02rem;
-		line-height: 1.72;
+	.intro {
+		font-size: 1.15rem;
+		color: var(--text-muted);
+		max-width: 60ch;
+		margin-inline: auto;
+		margin-bottom: 2.5rem;
 	}
 
 	.cta-row {
 		display: flex;
+		justify-content: center;
+		gap: 1rem;
 		flex-wrap: wrap;
-		gap: 12px;
-		margin-top: 28px;
 	}
 
-	.cta {
-		text-decoration: none;
-		padding: 13px 18px;
-		border-radius: 999px;
-		font-weight: 700;
+	.btn {
+		padding: 0.75rem 1.5rem;
+		border-radius: 99px;
+		font-weight: 600;
 	}
 
-	.primary {
-		background: linear-gradient(135deg, #d96b00, #f19a3e);
-		color: #fffaf2;
+	.btn.primary {
+		background: var(--text-main);
+		color: white;
 	}
 
-	.section {
-		padding-top: 24px;
+	.content-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 5rem;
 	}
 
-	.two-col,
-	.link-grid,
-	.faq-grid {
+	.panels {
 		display: grid;
-		gap: 20px;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
 	}
 
-	.two-col,
-	.link-grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+	.panel {
+		padding: 2.5rem;
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--line-soft);
 	}
 
-	.panel,
-	.faq-item {
-		padding: 28px;
-	}
-
-	.alt {
-		background:
-			linear-gradient(120deg, rgba(217, 107, 0, 0.08), rgba(21, 107, 134, 0.08)),
-			rgba(255, 255, 255, 0.9);
-	}
+	.panel.dental { background: var(--dental-bg); border-color: var(--dental-accent); }
+	.panel.industrial { background: var(--ind-bg); border-color: var(--ind-accent); }
 
 	.check-list {
-		padding-left: 18px;
-		margin-bottom: 0;
+		list-style: none;
+		padding: 0;
+		margin: 0;
 	}
 
-	.check-list li + li {
-		margin-top: 12px;
+	.check-list li {
+		padding-left: 1.5rem;
+		position: relative;
+		margin-bottom: 1rem;
+		color: var(--text-muted);
 	}
 
-	.section-heading {
-		margin-bottom: 18px;
+	.check-list li::before {
+		content: "✓";
+		position: absolute;
+		left: 0;
+		color: var(--dental-accent);
+		font-weight: 800;
+	}
+
+	.section-title {
+		font-size: 1.75rem;
+		font-weight: 800;
+		margin-bottom: 2.5rem;
+		text-align: center;
+	}
+
+	.link-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 1.5rem;
 	}
 
 	.link-card {
-		text-decoration: none;
-		padding: 24px;
+		padding: 2rem;
+		background: white;
+		border: 1px solid var(--line-soft);
+		border-radius: var(--radius-lg);
+		transition: all 0.2s ease;
+	}
+
+	.link-card:hover {
+		border-color: var(--dental-accent);
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
 	}
 
 	.faq-grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
 	}
 
-	@media (max-width: 860px) {
-		.two-col,
-		.link-grid,
-		.faq-grid {
-			grid-template-columns: 1fr;
-		}
+	.faq-item h3 {
+		font-size: 1.1rem;
+		margin-bottom: 0.75rem;
+	}
 
-		.hero {
-			padding: 28px 22px;
-		}
-
-		h1 {
-			max-width: none;
-		}
+	.faq-item p {
+		font-size: 0.95rem;
+		color: var(--text-muted);
 	}
 </style>

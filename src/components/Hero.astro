@@ -1,0 +1,126 @@
+---
+interface Props {
+	title: string;
+	lead: string;
+	primaryCTA: string;
+	primaryHref: string;
+	secondaryCTA: string;
+	secondaryHref: string;
+}
+
+const { title, lead, primaryCTA, primaryHref, secondaryCTA, secondaryHref } = Astro.props;
+---
+<section class="hero">
+	<div class="container hero-content">
+		<div class="text-block">
+			<span class="eyebrow">Bogotá, Fontibón, Colombia</span>
+			<h1>{title}</h1>
+			<p class="lead">{lead}</p>
+			<div class="actions">
+				<a href={primaryHref} class="btn primary">{primaryCTA}</a>
+				<a href={secondaryHref} class="btn secondary">{secondaryCTA}</a>
+			</div>
+		</div>
+		<div class="visual-block">
+			<!-- Proyectamos un gradiente elegante o imagen generada luego -->
+			<div class="hero-shape"></div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		padding: 6rem 0 8rem;
+		text-align: center;
+	}
+
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3rem;
+	}
+
+	.text-block {
+		max-width: 850px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.eyebrow {
+		display: inline-block;
+		color: var(--accent-dark);
+		font-weight: 700;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin-bottom: 2rem;
+	}
+
+	h1 {
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		font-weight: 800;
+		line-height: 1.05;
+		margin-bottom: 2rem;
+		color: var(--text-main);
+		background: var(--brand-light); /* #d6f3f4 matching nav */
+		padding: 2.5rem 3.5rem;
+		border-radius: 2.5rem;
+		border: 1px solid var(--line-soft);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.lead {
+		font-size: 1.25rem;
+		color: var(--text-main);
+		opacity: 0.9;
+		margin-bottom: 3rem;
+		max-width: 60ch;
+	}
+
+	.actions {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+	}
+
+	.btn {
+		padding: 1rem 2.5rem;
+		border-radius: 99px;
+		font-weight: 700;
+		font-size: 1rem;
+		text-align: center;
+		transition: all 0.2s ease;
+	}
+
+	.btn.primary {
+		background: var(--accent-dark);
+		color: var(--bg-primary);
+		box-shadow: 0 10px 20px -5px rgba(0, 67, 70, 0.3);
+	}
+
+	.btn.secondary {
+		background: var(--accent-light);
+		color: var(--text-main);
+	}
+
+	.btn:hover {
+		transform: translateY(-2px);
+		filter: brightness(1.1);
+	}
+
+	.visual-block {
+		position: relative;
+	}
+
+	.hero-shape {
+		aspect-ratio: 1;
+		background: linear-gradient(135deg, var(--dental-bg), var(--ind-bg));
+		border-radius: 24% 76% 70% 30% / 30% 30% 70% 70%;
+		filter: blur(40px);
+		opacity: 0.6;
+		width: 100%;
+	}
+</style>

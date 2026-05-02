@@ -1,0 +1,95 @@
+---
+---
+<header class="header">
+	<div class="container nav-wrapper">
+		<a href="/" class="logo">
+			<span class="mb">MB</span>
+			<span class="name">Aire y Succión</span>
+		</a>
+		<nav class="nav" aria-label="Navegación principal">
+			<a href="/odontologia/">Odontología</a>
+			<a href="/industrial/">Industrial</a>
+			<a href="/bogota/">Bogotá</a>
+			<a href="/blog/">Blog</a>
+		</nav>
+		<a href="https://wa.me/573000000000" class="btn-contact">Contacto</a>
+	</div>
+</header>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		background: rgba(214, 243, 244, 0.9); /* #d6f3f4 explicitly */
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--line-soft);
+		height: 80px;
+		display: flex;
+		align-items: center;
+		padding: 0 1rem;
+	}
+
+	.nav-wrapper {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: 2rem;
+		width: 100%;
+	}
+
+	.logo {
+		font-weight: 800;
+		font-size: 1.25rem;
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		white-space: nowrap;
+		color: var(--text-main);
+	}
+
+	.logo .mb {
+		background: var(--accent-dark);
+		color: #d6f3f4;
+		padding: 2px 6px;
+		border-radius: 4px;
+	}
+
+	.nav {
+		display: none;
+		gap: 2.5rem;
+		justify-content: center;
+	}
+
+	@media (min-width: 768px) {
+		.nav {
+			display: flex;
+		}
+	}
+
+	.nav a {
+		font-weight: 600;
+		color: var(--text-main);
+		font-size: 0.95rem;
+		opacity: 0.8;
+	}
+
+	.nav a:hover {
+		color: var(--accent-dark);
+		opacity: 1;
+	}
+
+	.btn-contact {
+		background: var(--accent-dark);
+		color: #d6f3f4;
+		padding: 8px 20px;
+		border-radius: 99px;
+		font-size: 0.875rem;
+		font-weight: 700;
+	}
+
+	.btn-contact:hover {
+		opacity: 0.9;
+		transform: scale(1.02);
+	}
+</style>

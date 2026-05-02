@@ -1,0 +1,149 @@
+---
+interface Service {
+	title: string;
+	description: string;
+	href: string;
+}
+
+interface Props {
+	id: string;
+	eyebrow: string;
+	title: string;
+	description: string;
+	services: Service[];
+	theme: 'dental' | 'industrial';
+}
+
+const { id, eyebrow, title, description, services, theme } = Astro.props;
+---
+<section id={id} class={`section ${theme}`}>
+	<div class="container py-content">
+		<div class="section-header">
+			<span class="eyebrow">{eyebrow}</span>
+			<h2>{title}</h2>
+			<p class="section-desc">{description}</p>
+		</div>
+		
+		<div class="grid">
+			{services.map(service => (
+				<div class="service-card">
+					<h3>{service.title}</h3>
+					<p>{service.description}</p>
+					<a href={service.href} class="learn-more">
+						Saber más 
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+					</a>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.section {
+		padding: 8rem 2rem; /* Added horizontal padding to section itself */
+	}
+
+	.section.dental { background: var(--dental-bg); }
+	.section.industrial { background: var(--ind-bg); }
+
+	.section-header {
+		margin-bottom: 4rem;
+		max-width: 600px;
+	}
+
+	.eyebrow {
+		display: inline-block;
+		font-weight: 700;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		margin-bottom: 1rem;
+		color: var(--text-muted);
+	}
+
+	.dental .eyebrow { color: var(--dental-accent); }
+	.industrial .eyebrow { color: var(--ind-accent); }
+
+	h2 {
+		font-size: clamp(2rem, 4vw, 2.75rem);
+		font-weight: 800;
+		line-height: 1.1;
+		margin-bottom: 1.5rem;
+		color: var(--text-main);
+	}
+
+	.section-desc {
+		font-size: 1.1rem;
+		color: var(--text-muted);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+
+	.service-card {
+		background: var(--brand-light); /* #d6f3f4 */
+		padding: 2.5rem;
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--line-soft);
+		transition: all 0.3s ease;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.service-card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: var(--accent-light); /* #74b3ce */
+	}
+
+	.service-card:hover {
+		transform: translateY(-8px);
+		box-shadow: var(--shadow-md);
+		background: white; /* Contrast shift on hover */
+		border-color: var(--accent-light);
+	}
+
+	h3 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		color: var(--text-main);
+	}
+
+	.service-card p {
+		color: var(--text-muted);
+		font-size: 1rem;
+		margin-bottom: 2rem;
+		flex-grow: 1;
+	}
+
+	.learn-more {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-weight: 700;
+		font-size: 0.9rem;
+		color: var(--text-main);
+	}
+
+	.dental .learn-more:hover { color: #854d0e; }
+	.industrial .learn-more:hover { color: var(--ind-accent); }
+
+	.learn-more svg {
+		transition: transform 0.2s ease;
+	}
+
+	.learn-more:hover svg {
+		transform: translateX(4px);
+	}
+</style>

@@ -1,576 +1,95 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import MainHeader from '../components/MainHeader.astro';
+import MainFooter from '../components/MainFooter.astro';
+import Hero from '../components/Hero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import FAQSection from '../components/FAQSection.astro';
+import ContactButton from '../components/ContactButton.astro';
 
-const pageTitle = 'MBAireYSuccion';
+const pageTitle = 'MB Aire y Succión | Servicio Técnico en Bogotá';
 const description =
-	'MB Aire y Succion en Bogota, Fontibon, Colombia ofrece servicio tecnico, mantenimiento, fabricacion y venta de equipos para el sector odontologico e industrial.';
+	'MB Aire y Succión en Bogotá, Fontibón. Servicio técnico, mantenimiento, fabricación y venta de equipos para el sector odontológico e industrial.';
 const keywords = [
-	'MBAireYSuccion',
-	'MB Aire y Succion',
-	'Bogota',
-	'Fontibon',
-	'Colombia',
-	'servicio tecnico odontologico',
-	'equipos odontologicos',
-	'compresores odontologicos',
-	'bombas de succion odontologica',
+	'MB Aire y Succión',
+	'Bogotá',
+	'Fontibón',
+	'servicio técnico odontológico',
 	'compresores industriales',
 	'mantenimiento de compresores',
-	'bobinado de motores electricos',
-	'cabezotes para compresores',
-	'servicio tecnico odontologico en Bogota',
-	'mantenimiento de compresores en Bogota',
+	'bobinado de motores',
+];
+
+const odontologiaServices = [
+	{ title: 'Equipos y Suministros', description: 'Venta de compresores, bombas de succión y sillas odontológicas de las mejores marcas.', href: '/odontologia/compresores-dentales/' },
+	{ title: 'Servicio Técnico', description: 'Mantenimiento preventivo y correctivo para asegurar la continuidad de su clínica.', href: '/odontologia/mantenimiento-equipos-odontologicos/' },
+	{ title: 'Succión a Medida', description: 'Diseñamos e instalamos sistemas de succión especializados según su flujo de trabajo.', href: '/odontologia/bombas-de-succion/' },
+];
+
+const industrialServices = [
+	{ title: 'Compresores de Pistón', description: 'Reparación y mantenimiento especializado para equipos lubricados de pistón.', href: '/industrial/compresores-piston/' },
+	{ title: 'Compresores de Tornillo', description: 'Servicio técnico orientado a la estabilidad y rendimiento de sistemas de tornillo.', href: '/industrial/compresores-tornillo/' },
+	{ title: 'Bobinado de Motores', description: 'Recuperación técnica de motores eléctricos con mano de obra especializada.', href: '/industrial/bobinado-de-motores-electricos/' },
+];
+
+const faqs = [
+	{ question: '¿Dónde está ubicada MB Aire y Succión?', answer: 'Estamos ubicados en Fontibón, Bogotá, Colombia, atendiendo a todo el sector.' },
+	{ question: '¿Qué servicios ofrecen para odontología?', answer: 'Suministro de compresores, bombas de succión, mantenimiento de equipos y sistemas a medida.' },
+	{ question: '¿Atienden emergencias técnicas industriales?', answer: 'Sí, realizamos diagnósticos precisos y reparaciones para minimizar el tiempo de inactividad.' },
 ];
 
 const structuredData = [
 	{
 		'@context': 'https://schema.org',
 		'@type': 'LocalBusiness',
-		name: 'MBAireYSuccion',
-		url: new URL('/', Astro.site ?? 'https://example.com').toString(),
+		name: 'MB Aire y Succión',
+		url: 'https://heber59.github.io',
 		description,
 		address: {
 			'@type': 'PostalAddress',
-			addressLocality: 'Bogota',
-			addressRegion: 'Fontibon',
+			addressLocality: 'Bogotá',
+			addressRegion: 'Fontibón',
 			addressCountry: 'CO',
 		},
-		areaServed: ['Bogota', 'Fontibon', 'Colombia'],
-		knowsAbout: [
-			'servicio tecnico odontologico',
-			'equipos medicos generales',
-			'compresores odontologicos',
-			'sistemas de succion a la medida',
-			'compresores lubricados de piston',
-			'compresores de tornillo',
-			'bobinado de motores electricos',
-		],
-	},
-	{
-		'@context': 'https://schema.org',
-		'@type': 'WebSite',
-		name: 'MBAireYSuccion',
-		url: new URL('/', Astro.site ?? 'https://example.com').toString(),
-		description,
-		inLanguage: 'es',
-	},
-	{
-		'@context': 'https://schema.org',
-		'@type': 'FAQPage',
-		mainEntity: [
-			{
-				'@type': 'Question',
-				name: 'Que hace MBAireYSuccion?',
-				acceptedAnswer: {
-					'@type': 'Answer',
-					text: 'MBAireYSuccion ofrece servicio tecnico, mantenimiento, fabricacion y venta de equipos para el sector odontologico e industrial.',
-				},
-			},
-			{
-				'@type': 'Question',
-				name: 'Donde esta ubicada MBAireYSuccion?',
-				acceptedAnswer: {
-					'@type': 'Answer',
-					text: 'MBAireYSuccion tiene presencia en Bogota, Fontibon, Colombia y atiende necesidades tecnicas del sector odontologico e industrial.',
-				},
-			},
-			{
-				'@type': 'Question',
-				name: 'Que servicios ofrece en el area odontologica?',
-				acceptedAnswer: {
-					'@type': 'Answer',
-					text: 'En odontologia suministra compresores, bombas de succion de alta, equipos odontologicos y equipos medicos generales, ademas de mantenimiento tecnico y sistemas de succion especializados a la medida.',
-				},
-			},
-			{
-				'@type': 'Question',
-				name: 'Que servicios ofrece en el sector industrial?',
-				acceptedAnswer: {
-					'@type': 'Answer',
-					text: 'En el sector industrial realiza reparacion y mantenimiento de compresores lubricados de piston, compresores de tornillo, cabezotes y bobinado de motores electricos con repuestos de calidad y mano de obra especializada.',
-				},
-			},
-		],
 	},
 ];
 ---
 
-<Layout title={pageTitle} description={description} pathname="/" keywords={keywords} structuredData={structuredData}>
-	<main class="page">
-		<header class="hero">
-			<nav class="topbar" aria-label="Principal">
-				<a class="brand" href="/">MBAireYSuccion</a>
-				<div class="nav-links">
-					<a href="/odontologia/">Odontologia</a>
-					<a href="/industrial/">Industrial</a>
-					<a href="/bogota/">Bogota</a>
-					<a href="/blog/">Blog</a>
-					<a href="#faq">FAQ</a>
-				</div>
-			</nav>
+<Layout title={pageTitle} description={description} keywords={keywords} structuredData={structuredData}>
+	<MainHeader />
+	
+	<main>
+		<Hero 
+			title="Soluciones Técnicas Confiables en Aire y Succión"
+			lead="Especialistas en servicio técnico, mantenimiento y fabricación de equipos para el sector odontológico e industrial en Bogotá."
+			primaryCTA="Área Odontológica"
+			primaryHref="/odontologia/"
+			secondaryCTA="Área Industrial"
+			secondaryHref="/industrial/"
+		/>
 
-			<div class="hero-grid">
-				<section class="hero-copy">
-					<p class="eyebrow">Bogota, Fontibon, Colombia</p>
-					<h1>MB Aire y Succion en Bogota atiende el sector odontologico e industrial con soluciones tecnicas confiables</h1>
-					<p class="lead">
-						Somos una empresa especializada en servicio tecnico, mantenimiento y fabricacion de
-						equipos para odontologia e industria en Bogota, Fontibon, con enfoque en calidad,
-						diagnostico preciso y alto rendimiento operativo.
-					</p>
-					<div class="cta-row">
-						<a class="cta primary" href="/odontologia/">Ver area odontologica</a>
-						<a class="cta secondary" href="/industrial/">Ver area industrial</a>
-					</div>
-				</section>
+		<ServiceGrid 
+			id="odontologia"
+			eyebrow="Sector Odontológico"
+			title="Equipos y Soporte para su Clínica"
+			description="Garantizamos el funcionamiento óptimo de su consultorio con tecnología de punta y respaldo técnico especializado."
+			services={odontologiaServices}
+			theme="dental"
+		/>
 
-				<aside class="hero-card" aria-label="Resumen de especialidades">
-					<p class="card-kicker">Especialidades</p>
-					<ul>
-						<li>Odontologia: equipos, compresores, succion y servicio tecnico.</li>
-						<li>Industria: compresores, cabezotes y motores electricos.</li>
-						<li>Soluciones a la medida segun la necesidad de cada cliente.</li>
-					</ul>
-				</aside>
-			</div>
-		</header>
+		<ServiceGrid 
+			id="industrial"
+			eyebrow="Sector Industrial"
+			title="Potencia y Continuidad Operativa"
+			description="Mantenimiento integral de compresores y motores para asegurar la productividad de su industria."
+			services={industrialServices}
+			theme="industrial"
+		/>
 
-		<section class="section intro">
-			<div class="section-heading">
-				<p class="eyebrow">Quienes somos</p>
-				<h2>Servicio tecnico oportuno, profesional y con altos estandares de calidad</h2>
-			</div>
-			<div class="card-grid two-up">
-				<article class="info-card">
-					<h3>Compromiso tecnico</h3>
-					<p>
-						Desde Bogota, Fontibon, trabajamos para prolongar la vida util de los equipos y
-						optimizar su rendimiento con diagnosticos precisos, repuestos de calidad y mano de obra
-						especializada.
-					</p>
-				</article>
-				<article class="info-card">
-					<h3>Dos areas semanticamente separadas</h3>
-					<p>
-						La pagina distingue con claridad el sector odontologico y el sector industrial para que
-						cada linea de negocio tenga mejor comprension semantica y mejor posicionamiento futuro.
-					</p>
-				</article>
-			</div>
-		</section>
-
-		<section id="odontologia" class="section spotlight">
-			<div>
-				<p class="eyebrow">Area odontologica</p>
-				<h2>Soluciones odontologicas con servicio tecnico, equipos y sistemas de succion especializados</h2>
-			</div>
-			<div class="spotlight-grid">
-				<div class="spotlight-card">
-					<h3>Venta de equipos y productos</h3>
-					<p>
-						Suministramos diferentes tipos y marcas de compresores, bombas de succion de alta,
-						sillas odontologicas y equipos medicos generales segun la necesidad del cliente.
-					</p>
-				</div>
-				<div class="spotlight-card">
-					<h3>Servicio tecnico odontologico</h3>
-					<p>
-						Realizamos mantenimiento a equipos odontologicos para asegurar un funcionamiento
-						confiable, continuo y alineado con los estandares clinicos actuales.
-					</p>
-				</div>
-				<div class="spotlight-card">
-					<h3>Succion a la medida</h3>
-					<p>
-						Disenamos e instalamos sistemas de succion especializados y generados a la medida,
-						dependiendo del flujo de trabajo y requerimientos tecnicos de cada consultorio.
-					</p>
-				</div>
-			</div>
-			<div class="section-links">
-				<a class="mini-link" href="/odontologia/">Ir al silo de odontologia</a>
-				<a class="mini-link" href="/odontologia/compresores-dentales/">Compresores dentales</a>
-				<a class="mini-link" href="/odontologia/bombas-de-succion/">Bombas de succion</a>
-				<a class="mini-link" href="/odontologia/mantenimiento-equipos-odontologicos/">Mantenimiento odontologico</a>
-			</div>
-		</section>
-
-		<section id="industrial" class="section promise">
-			<div class="promise-panel">
-				<p class="eyebrow">Area industrial</p>
-				<h2>Experiencia en mantenimiento y reparacion de compresores, cabezotes y motores electricos</h2>
-				<p>
-					Atendemos el sector industrial con mantenimiento y reparacion de compresores lubricados
-					de piston y compresores de tornillo, ademas de trabajo tecnico en cabezotes y bobinado de
-					motores electricos.
-				</p>
-			</div>
-			<div class="section-links">
-				<a class="mini-link" href="/industrial/">Ir al silo industrial</a>
-				<a class="mini-link" href="/industrial/compresores-piston/">Compresores de piston</a>
-				<a class="mini-link" href="/industrial/compresores-tornillo/">Compresores de tornillo</a>
-				<a class="mini-link" href="/industrial/bobinado-de-motores-electricos/">Bobinado de motores</a>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="card-grid three-up">
-				<article class="info-card">
-					<h3>Compresores industriales</h3>
-					<p>
-						Intervenimos equipos lubricados de piston y compresores de tornillo con diagnosticos
-						claros, mantenimiento preventivo y correctivo.
-					</p>
-				</article>
-				<article class="info-card">
-					<h3>Cabezotes y repuestos</h3>
-					<p>
-						Ofrecemos soluciones para cabezotes, partes criticas y repuestos de calidad enfocados
-						en continuidad operativa y mejor rendimiento.
-					</p>
-				</article>
-				<article class="info-card">
-					<h3>Motores electricos</h3>
-					<p>
-						Realizamos bobinado de motores electricos con mano de obra especializada para recuperar
-						desempeno y extender la vida util de los equipos.
-					</p>
-				</article>
-			</div>
-		</section>
-
-		<section id="faq" class="section">
-			<div class="section-heading">
-				<p class="eyebrow">Preguntas frecuentes</p>
-				<h2>Informacion clave sobre MB Aire y Succion</h2>
-			</div>
-			<div class="faq-list">
-				<article class="faq-item">
-					<h3>Donde esta ubicada MB Aire y Succion?</h3>
-					<p>
-						MB Aire y Succion esta ubicada en Bogota, Fontibon, Colombia y ofrece atencion para el
-						sector odontologico e industrial.
-					</p>
-				</article>
-				<article class="faq-item">
-					<h3>Que atiende MB Aire y Succion en odontologia?</h3>
-					<p>
-						Atendemos equipos odontologicos, compresores, bombas de succion de alta, sillas
-						odontologicas, equipos medicos generales y sistemas de succion a la medida.
-					</p>
-				</article>
-				<article class="faq-item">
-					<h3>Que atiende MB Aire y Succion en industria?</h3>
-					<p>
-						Trabajamos con compresores lubricados de piston, compresores de tornillo, cabezotes y
-						motores electricos, incluyendo mantenimiento, reparacion y bobinado.
-					</p>
-				</article>
-				<article class="faq-item">
-					<h3>Cual es el enfoque del servicio?</h3>
-					<p>
-						El enfoque es brindar un servicio tecnico oportuno, profesional y de alta calidad para
-						optimizar el rendimiento y prolongar la vida util de los equipos.
-					</p>
-				</article>
-			</div>
-		</section>
-
-		<section class="section">
-			<div class="section-heading">
-				<p class="eyebrow">Cobertura y contenido</p>
-				<h2>Explora rutas por ciudad y por contenido informativo</h2>
-			</div>
-			<div class="section-links">
-				<a class="mini-link" href="/bogota/">Servicios en Bogota</a>
-				<a class="mini-link" href="/bogota/compresores-dentales/">Compresores dentales en Bogota</a>
-				<a class="mini-link" href="/bogota/bobinado-de-motores-electricos/">Bobinado de motores en Bogota</a>
-				<a class="mini-link" href="/blog/">Ir al blog</a>
-			</div>
-		</section>
+		<FAQSection faqs={faqs} />
+		
+		<ContactButton />
 	</main>
+
+	<MainFooter />
 </Layout>
-
-<style>
-	.page {
-		padding: 24px;
-	}
-
-	.hero,
-	.section {
-		width: min(1120px, 100%);
-		margin: 0 auto;
-	}
-
-	.hero {
-		padding: 20px 0 48px;
-	}
-
-	.topbar {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 16px;
-		margin-bottom: 52px;
-		padding: 18px 22px;
-		background: rgba(255, 255, 255, 0.72);
-		backdrop-filter: blur(18px);
-		border: 1px solid rgba(16, 33, 47, 0.08);
-		border-radius: 999px;
-		box-shadow: 0 18px 50px rgba(16, 33, 47, 0.08);
-	}
-
-	.brand,
-	.nav-links a,
-	.cta {
-		text-decoration: none;
-	}
-
-	.brand {
-		font-size: 1.1rem;
-		font-weight: 700;
-		letter-spacing: 0.02em;
-	}
-
-	.nav-links {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 18px;
-		color: var(--muted);
-	}
-
-	.hero-grid {
-		display: grid;
-		grid-template-columns: 1.7fr 1fr;
-		gap: 28px;
-		align-items: stretch;
-	}
-
-	.hero-copy,
-	.hero-card,
-	.info-card,
-	.spotlight-card,
-	.promise-panel,
-	.faq-item {
-		background: var(--surface);
-		border: 1px solid var(--line);
-		border-radius: var(--radius);
-		box-shadow: var(--shadow);
-	}
-
-	.hero-copy {
-		padding: 48px;
-	}
-
-	.eyebrow,
-	.card-kicker {
-		text-transform: uppercase;
-		letter-spacing: 0.14em;
-		font-size: 0.77rem;
-		font-weight: 700;
-		color: var(--accent-alt);
-		margin: 0 0 14px;
-	}
-
-	h1,
-	h2,
-	h3,
-	p,
-	ul {
-		margin-top: 0;
-	}
-
-	h1 {
-		font-size: clamp(2.6rem, 5vw, 5rem);
-		line-height: 0.96;
-		max-width: 12ch;
-		margin-bottom: 24px;
-	}
-
-	h2 {
-		font-size: clamp(2rem, 3vw, 3.2rem);
-		line-height: 1.02;
-		margin-bottom: 0;
-		max-width: 16ch;
-	}
-
-	h3 {
-		font-size: 1.35rem;
-		margin-bottom: 14px;
-	}
-
-	.lead,
-	.info-card p,
-	.spotlight-card p,
-	.promise-panel p,
-	.faq-item p,
-	.hero-card li {
-		color: var(--muted);
-		font-size: 1.03rem;
-		line-height: 1.7;
-	}
-
-	.cta-row {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 14px;
-		margin-top: 30px;
-	}
-
-	.cta {
-		padding: 14px 20px;
-		border-radius: 999px;
-		font-weight: 700;
-		transition:
-			transform 180ms ease,
-			background 180ms ease,
-			color 180ms ease;
-	}
-
-	.cta:hover,
-	.nav-links a:hover {
-		transform: translateY(-1px);
-	}
-
-	.primary {
-		background: linear-gradient(135deg, var(--accent), #f19a3e);
-		color: #fffaf2;
-	}
-
-	.secondary {
-		background: rgba(21, 107, 134, 0.08);
-		color: var(--accent-alt);
-	}
-
-	.hero-card {
-		padding: 32px;
-		align-self: end;
-		background:
-			linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 246, 235, 0.94)),
-			var(--surface-strong);
-	}
-
-	.hero-card ul {
-		padding-left: 18px;
-		margin-bottom: 0;
-	}
-
-	.hero-card li + li {
-		margin-top: 14px;
-	}
-
-	.section {
-		padding: 28px 0 56px;
-	}
-
-	.section-heading {
-		margin-bottom: 26px;
-	}
-
-	.card-grid,
-	.spotlight-grid,
-	.faq-list {
-		display: grid;
-		gap: 20px;
-	}
-
-	.section-links {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 12px;
-		margin-top: 22px;
-	}
-
-	.mini-link {
-		text-decoration: none;
-		padding: 12px 16px;
-		border-radius: 999px;
-		background: rgba(255, 255, 255, 0.72);
-		border: 1px solid rgba(16, 33, 47, 0.08);
-		box-shadow: 0 12px 32px rgba(16, 33, 47, 0.08);
-		color: var(--accent-alt);
-		font-weight: 700;
-	}
-
-	.card-grid,
-	.spotlight-grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	.two-up {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.three-up {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	.info-card,
-	.spotlight-card,
-	.faq-item {
-		padding: 28px;
-	}
-
-	.spotlight {
-		padding-top: 18px;
-	}
-
-	.promise-panel {
-		padding: 34px;
-		background:
-			linear-gradient(120deg, rgba(217, 107, 0, 0.1), rgba(21, 107, 134, 0.08)),
-			var(--surface);
-	}
-
-	.promise-panel h2 {
-		margin-bottom: 18px;
-		max-width: 18ch;
-	}
-
-	.faq-list {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
-	@media (max-width: 960px) {
-		.hero-grid,
-		.card-grid,
-		.spotlight-grid,
-		.faq-list {
-			grid-template-columns: 1fr;
-		}
-
-		.hero-copy {
-			padding: 34px 26px;
-		}
-
-		h1 {
-			max-width: none;
-		}
-	}
-
-	@media (max-width: 720px) {
-		.page {
-			padding: 16px;
-		}
-
-		.topbar {
-			border-radius: 24px;
-			padding: 18px;
-			margin-bottom: 28px;
-			align-items: flex-start;
-			flex-direction: column;
-		}
-
-		h1 {
-			font-size: 2.7rem;
-		}
-
-		.hero-card,
-		.info-card,
-		.spotlight-card,
-		.promise-panel,
-		.faq-item {
-			padding: 24px;
-		}
-	}
-</style>

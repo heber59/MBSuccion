@@ -1,0 +1,129 @@
+---
+const currentYear = new Date().getFullYear();
+---
+<footer class="footer">
+	<div class="container footer-grid">
+		<div class="brand-info">
+			<div class="logo">
+				<span class="mb">MB</span>
+				<span>Aire y Succión</span>
+			</div>
+			<p class="description">
+				Especialistas en servicio técnico, mantenimiento y fabricación de equipos para el sector odontológico e industrial en Bogotá.
+			</p>
+		</div>
+		
+		<div class="links-group">
+			<h4>Servicios</h4>
+			<ul>
+				<li><a href="/odontologia/">Odontología</a></li>
+				<li><a href="/industrial/">Industrial</a></li>
+				<li><a href="/bogota/">Servicios en Bogotá</a></li>
+			</ul>
+		</div>
+
+		<div class="links-group">
+			<h4>Empresa</h4>
+			<ul>
+				<li><a href="/blog/">Blog Técnico</a></li>
+				<li><a href="/#faq">Preguntas Frecuentes</a></li>
+				<li><a href="/#contacto">Contacto</a></li>
+			</ul>
+		</div>
+
+		<div class="contact-info">
+			<h4>Ubicación</h4>
+			<p>Fontibón, Bogotá, Colombia</p>
+			<p>Atención Técnica Especializada</p>
+		</div>
+	</div>
+	
+	<div class="footer-bottom">
+		<div class="container">
+			<p>&copy; {currentYear} MB Aire y Succión. Todos los derechos reservados.</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: #f8fafc; /* Light gray footer */
+		border-top: 1px solid var(--line-soft);
+		padding: 6rem 1rem 0;
+		margin-top: 4rem;
+	}
+
+	.footer-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 3rem;
+		padding-bottom: 3rem;
+	}
+
+	.brand-info .logo {
+		font-weight: 800;
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+		display: flex;
+		gap: 0.5rem;
+		color: var(--text-main);
+	}
+
+	.brand-info .mb {
+		background: var(--accent-dark);
+		color: #d6f3f4;
+		padding: 2px 6px;
+		border-radius: 4px;
+	}
+
+	.brand-info .description {
+		color: var(--text-main);
+		opacity: 0.8;
+		font-size: 0.9rem;
+		max-width: 30ch;
+	}
+
+	h4 {
+		font-size: 1.1rem;
+		font-weight: 800;
+		margin-bottom: 1.5rem;
+		color: var(--text-main);
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	li {
+		margin-bottom: 0.75rem;
+	}
+
+	li a {
+		color: var(--text-main);
+		opacity: 0.8;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+
+	li a:hover {
+		color: var(--accent-dark);
+		opacity: 1;
+	}
+
+	.contact-info p {
+		color: var(--text-main);
+		opacity: 0.8;
+		font-size: 0.9rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.footer-bottom {
+		border-top: 1px solid var(--line-soft);
+		padding: 1.5rem 0;
+		text-align: center;
+		color: var(--text-muted);
+		font-size: 0.8rem;
+	}
+</style>
