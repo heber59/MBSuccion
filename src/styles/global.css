@@ -1,0 +1,93 @@
+/* Global CSS Reset & Box Model */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Remove default input styles */
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Remove link underlines */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove default image borders */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove default table borders */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* Oculta scrollbar en Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+:root {
+  color-scheme: light;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f5f9;
+  --text-main: #091d2e;
+  --text-muted: #508991;
+  --line-soft: rgba(23, 42, 58, 0.1);
+
+  --brand-light: #d6f3f4;
+  --accent-light: #74b3ce;
+  --accent-dark: #004346;
+  --dental-accent: #508991;
+  --dental-bg: #f8fafc;
+
+  --ind-bg: #f1f1f1;
+  --ind-title: #1c1a17;
+  --ind-surface: #e9decb;
+  --ind-accent: #c4a552;
+  --ind-text: #3d3a35;
+
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(23, 42, 58, 0.1);
+  --shadow-md: 0 10px 30px -10px rgba(23, 42, 58, 0.15);
+
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
